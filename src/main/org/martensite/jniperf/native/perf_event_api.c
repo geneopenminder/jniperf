@@ -14,7 +14,7 @@ int perf_event_open(struct perf_event_attr * hw, pid_t pid, int cpu, int grp, un
 }
 
 JNIEXPORT jint JNICALL
-Java_org_martensite_jniperf_PerfEventApi_perfEventOpen(JNIEnv *, jobject, jint type, jint event, jint pid, jint cpu, jlong flags)
+Java_org_martensite_jniperf_JniPerfEventApi_perfEventOpen(JNIEnv *, jobject, jint type, jint event, jint pid, jint cpu, jlong flags)
 {
     struct perf_event_attr pe;
     int fd;
@@ -35,13 +35,13 @@ Java_org_martensite_jniperf_PerfEventApi_perfEventOpen(JNIEnv *, jobject, jint t
 }
 
 JNIEXPORT void JNICALL
-Java_org_martensite_jniperf_PerfEventApi_closePerfEvent(JNIEnv *, jobject, jint fd)
+Java_org_martensite_jniperf_JniPerfEventApi_closePerfEvent(JNIEnv *, jobject, jint fd)
 {
     close(fd);
 }
 
 JNIEXPORT jlong JNICALL
-Java_org_martensite_jniperf_PerfEventApi_getCounterValue(JNIEnv *, jobject, jint fd)
+Java_org_martensite_jniperf_JniPerfEventApi_getCounterValue(JNIEnv *, jobject, jint fd)
 {
     long long count;
     read(fd, &count, sizeof(long long));

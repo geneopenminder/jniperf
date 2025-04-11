@@ -5,6 +5,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.File;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.martensite.jniperf.CommonPerfEvents.*;
@@ -41,7 +42,6 @@ public class PerfTest extends TestCase {
         api.closePerfEvent(fd);
     }
 
-    /*
     public void testPerfTypeHardware() {
         File projectDir = new File("target/native/jniperf.so");
         JniPerfEventApi api = JniPerfEventApi.create(projectDir.getAbsolutePath());
@@ -54,17 +54,5 @@ public class PerfTest extends TestCase {
         api.closePerfEvent(fd);
     }
 
-    public void testPerfTypeRaw() {
-        File projectDir = new File("target/native/jniperf.so");
-        JniPerfEventApi api = JniPerfEventApi.create(projectDir.getAbsolutePath());
-        int fd = api.perfEventOpenRaw(x86IntelRawEvents.L1D_ALL_REF_ANY, CommonPerfEvents.PID_CURRENT, CommonPerfEvents.CPU_ANY, CommonPerfEvents.PERF_FLAGS_DEFAULT);
-        Assert.assertTrue(fd > 0);
-        long counter1 = api.getCounterValue(fd);
-        ThreadLocalRandom.current().nextLong();
-        long counter2 = api.getCounterValue(fd);
-        Assert.assertNotSame(counter1, counter2);
-        api.closePerfEvent(fd);
-    }
-     */
 
 }
